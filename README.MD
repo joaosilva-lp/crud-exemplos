@@ -1,4 +1,4 @@
-##Add Data to Cloud Firestone
+##Add Data to Cloud Firestone:
 
 1 - addDoc()
     we need to have:
@@ -35,7 +35,7 @@
 
 
 
-##UPDATE DATA TO CLOUD FIRESTORE
+##UPDATE DATA TO CLOUD FIRESTORE:
 1 - setDoc()
 2 - updateDoc()
 
@@ -45,7 +45,7 @@
 3 - setDoc() where we pass data along with doc() method
 
 
-##UPDATE ONE OR MORE FIELDS<br>
+##UPDATE ONE OR MORE FIELDS:
 ##setDoc() - Arguments
 1 - doc() - Arguments
     1 - database(db)
