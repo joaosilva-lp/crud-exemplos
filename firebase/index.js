@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, setDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, setDoc, doc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCI5C6mqFFtIkZF3tAz9fI4NVLYsplb9oA",
@@ -30,4 +30,34 @@ const db = getFirestore(app);
   }
 })();
 */
+
+/* //setDoc()
+(async () => {
+  try {
+    const carDocRef = doc(db, "cars", "panadoscompao");
+    await setDoc(carDocRef, {
+      brand: "seat",
+      model: "ibiza",
+      year: 1996
+    });
+    console.log("Success");
+  } catch (error) {
+    console.log(error);
+  }
+})();
+
+*/
+
+(async()=>{
+  try {
+    const cityDocRef = doc(db, "cities", "9GNz3ANhQAm0T6Wyj59H");
+    await setDoc(cityDocRef, {
+      name: "Vancouver"
+    }, {merge:true})
+    console.log("Registo criado com sucesso")
+  } catch (error) {
+      console.log(error)
+  }
+})();
+
 
