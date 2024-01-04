@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Contacts App</title>
 </head>
 <body>
-    
+    <h1>Contacts App</h1>
+    <main id="app-layout">
+        <section id="left-col">
+            <header>
+                <div class="left"></div>
+                <div class="title">Contacts</div>
+                <div class="right">
+                    <button>Add</button>
+                </div>
+            </header>
+        </section>
+        <section id="right-col">
+            <header>
+                <div class="title">Name</div>
+            </header>
+        </section>
+    </main>
+
+    <!-- MODAL -->
+    <div id="modal-overlay">
+        <div id="modal">
+            <div class="modal-header">
+                <h2>Modal Header</h2>
+            </div>
+            <div class="modal-content">
+                <p>Modal Content</p>
+            </div>
+            <div class="modal-footer">
+                Modal Footer
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="app.js"></script>
 </body>
 </html>
