@@ -45,7 +45,7 @@
 3 - setDoc() where we pass data along with doc() method
 
 
-##UPDATE ONE OR MORE FIELDS
+##UPDATE ONE OR MORE FIELDS<br>
 ##setDoc() - Arguments
 1 - doc() - Arguments
     1 - database(db)
