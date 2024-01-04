@@ -23,3 +23,11 @@
     1 - Database Object - where we want to add data to
     2 - doc() - where we pass db, collection name & custom ID
     3 - setDoc() - where we pass data along with doc() method
+
+    Arguments:
+    1 - doc()
+        1 - database (db)
+        2 - collection name (countries)
+        3 - custom document ID (my.custom.id@gmail.com)
+    
+    2 - data {}

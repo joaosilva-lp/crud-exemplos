@@ -31,14 +31,3 @@ const db = getFirestore(app);
 })();
 */
 
-(async () => {
-  try {
-    const docRef = await setDoc(collection(db, "users"), {
-      name: "Artur Albuquerque",
-      country: "Portugal"
-    });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-})();
