@@ -7,8 +7,6 @@ body{
     display:flex;
 }
 
-
-
 #app-layout #left-col{
     border: 1px solid blue;
     flex: 25%;
@@ -52,6 +50,7 @@ header .right{
 }
 
 /*GLOBAL STYLES*/
+
 button{
     background-color: #32bacf;
     border: none;
@@ -59,6 +58,7 @@ button{
     font-size: 1em;
     margin:5px;
     padding:5px 8px;
+    border-radius: 4px;
 }
 
 button:hover{
@@ -86,5 +86,52 @@ button:hover{
     max-width: 650px;
     width: 100%;
     background-color: white;
+    border-radius: 10px;
 
+}
+
+
+/* ADD CONTACTS FORM*/
+
+#modal .modal-header h2{
+    text-align: center;
+    margin:0;
+    padding: 10px;
+}
+
+#modal .modal-content .row{
+    display: flex;
+    
+}
+
+
+#modal .modal-content .row .input-group{
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    margin: 5px 15px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"]{
+    font-size: 16px;
+    height: 28px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #667;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+}
+
+
+#modal .modal-footer{
+    display: flex;
+    justify-content: right;
+
+}
+
+.close-btn{
+    background-color: #999;
 }
