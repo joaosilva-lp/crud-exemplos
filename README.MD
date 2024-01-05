@@ -15,7 +15,7 @@
 
     Arguments:
     1 - collection()
-    2- {} - data
+    2- {} - data 
 
 
 2 - setDoc()
