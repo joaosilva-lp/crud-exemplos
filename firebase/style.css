@@ -77,7 +77,7 @@ button:hover{
     top: 0;
     left: 0;
 
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }
@@ -135,3 +135,4 @@ input[type="email"]{
 .close-btn{
     background-color: #999;
 }
+
