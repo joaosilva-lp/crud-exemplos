@@ -1,17 +1,9 @@
-import {
-    getFirestore,
-    collection,
-    addDoc,
-    onSnapshot,
-    doc,
-    updateDoc,
-    deleteDoc,
-  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import {getFirestore, collection, addDoc} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"
   
-  const db = getFirestore();
-  const dbRef = collection(db, "agenda");
+const db = getFirestore();
+const dbRef = collection(db, "agenda");
 
-
+/////////
 //MODAL//
 /////////
 const addBtn = document.querySelector(".add-btn");
@@ -62,7 +54,7 @@ const saveButtonPressed = async() =>{
     checkEmail(email);
     checkInputLength(age,2);
     checkInputLength(phone,10);
-    showErrorMessages();
+    showErrorMessages(error);
     
     if(Object.keys(error).length === 0){
         await addDoc(dbRef, {
