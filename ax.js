@@ -12,7 +12,7 @@ for (let i = 0; i < 1000000; i++) {
   // Gerar combinação de 8 letras aleatórias
   for (let j = 0; j < 8; j++) {
     const índiceAleatório = Math.floor(Math.random() * letras.length);
-    combinação += letras[índiceAleatório];
+    combinação += letras[índiceAleatório]; 
   }
 
   const url = link + combinação;
