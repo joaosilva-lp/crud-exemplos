@@ -12,8 +12,8 @@ import {
   const dbRef = collection(db, "agenda");
 
 
-//MODAL
-//
+//MODAL//
+/////////
 const addBtn = document.querySelector(".add-btn");
 const modalOverlay = document.getElementById("modal-overlay");
 const closeBtn = document.querySelector(".close-btn");
