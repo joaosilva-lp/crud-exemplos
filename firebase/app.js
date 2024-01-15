@@ -13,7 +13,10 @@ const getContacts = async()=>{
     const docSnap = await getDocs(dbRef);
 
     docSnap.forEach((doc)=>{
-      console.log(doc.data())
+      console.log(doc.data().email)
+      if(doc.data().email==="jigfifyhjstdjsjgfjgsfsjgfsgvyfv@sapo.pt"){
+        console.log("Deu certo: "+doc.data().age)
+      }
     });
 
  } catch (err) {
