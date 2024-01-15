@@ -1,7 +1,31 @@
-import {getFirestore, collection, addDoc} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"
+import {getFirestore, collection, addDoc, getDocs} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"
   
 const db = getFirestore();
 const dbRef = collection(db, "agenda");
+
+//////////
+//GET DATA
+//////////
+
+const getContacts = async()=>{
+ 
+  try {
+    const docSnap = await getDocs(dbRef);
+
+    docSnap.forEach((doc)=>{
+      console.log(doc.data())
+    });
+
+ } catch (err) {
+    console.log("getContacts = "+err);
+ }
+
+}
+
+getContacts();
+
+
+
 
 /////////
 //MODAL//
@@ -19,9 +43,14 @@ const closeButtonPressed = ()=>{
 }
 
 const hideModal = (e) =>{
+  if(e instanceof Event){
     if(e.target===e.currentTarget){
-        modalOverlay.style.display = "none"
+      modalOverlay.style.display = "none"
     }
+  } else{
+    modalOverlay.style.display="none";
+  }
+
 }
 
 
@@ -66,8 +95,12 @@ const saveButtonPressed = async() =>{
           phone: phone.value,
           email: email.value
       });
+
+      hideModal();
+
       } catch (err) {
-       console.log(err);
+       setErrorMessage("error", "Unable to add user data to the database. Please try again later");
+       showErrorMessages();
       }
     };
 }
