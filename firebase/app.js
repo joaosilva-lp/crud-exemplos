@@ -57,13 +57,18 @@ const saveButtonPressed = async() =>{
     showErrorMessages(error);
     
     if(Object.keys(error).length === 0){
+
+      try {
         await addDoc(dbRef, {
-            firstname: firstname.value,
-            lastname: lastname.value,
-            age: age.value,
-            phone: phone.value,
-            email: email.value
-        });
+          firstname: firstname.value,
+          lastname: lastname.value,
+          age: age.value,
+          phone: phone.value,
+          email: email.value
+      });
+      } catch (err) {
+       console.log(err);
+      }
     };
 }
 
