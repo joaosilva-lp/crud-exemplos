@@ -1,4 +1,10 @@
-import {getFirestore, collection, addDoc, getDocs} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"
+import {  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot,
+  doc,
+  updateDoc,
+  deleteDoc} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"
   
 const db = getFirestore();
 const dbRef = collection(db, "agenda");
@@ -7,28 +13,61 @@ const dbRef = collection(db, "agenda");
 //GET DATA
 //////////
 
-const getContacts = async()=>{
- 
+let contacts = [];
+
+const getContacts = async () => {
   try {
-    const docSnap = await getDocs(dbRef);
+    await onSnapshot(dbRef, (docsSnap) => {
+      contacts = [];
 
-    docSnap.forEach((doc)=>{
-      console.log(doc.data().email)
-      if(doc.data().email==="jigfifyhjstdjsjgfjgsfsjgfsgvyfv@sapo.pt"){
-        console.log("Deu certo: "+doc.data().age)
-      }
+      docsSnap.forEach((doc) => {
+        const contact = doc.data();
+        contact.id = doc.id;
+        contacts.push(contact);
+      });
+      showContacts(contacts);
     });
-
- } catch (err) {
-    console.log("getContacts = "+err);
- }
-
-}
+  } catch (err) {
+    console.log("getContacts: " + err);
+  }
+};
 
 getContacts();
 
+// **************
+// SHOW CONTACT AS LIST ITEM ON THE LEFT
+// **************
 
+const contactList = document.getElementById("contact-list");
 
+const showContacts = (contacts) => {
+  contactList.innerHTML = "";
+
+  contacts.forEach((contact) => {
+    const li = `
+                <li class="contact-list-item" id="${contact.id}">
+                    <div class="media">
+                        <div class="two-letters">${contact.firstname.charAt(
+                          0
+                        )}${contact.lastname.charAt(0)}</div>
+                    </div>
+                    <div class="content">
+                        <div class="title">
+                        ${contact.firstname} ${contact.lastname}
+                        </div>
+                        <div class="sub-title">
+                        ${contact.email}
+                        </div>
+                    </div>
+                    <div class="action">
+                        <button class="edit-user">edit</button>
+                        <button class="delete-user">delete</button>
+                    </div>
+                </li>`;
+
+    contactList.innerHTML += li;
+  });
+};
 
 /////////
 //MODAL//
