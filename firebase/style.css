@@ -187,3 +187,19 @@ input[type="email"]{
     justify-content: center;
     align-items: center;
 }
+
+/*RIGHT COLUMN*/
+#right-col-detail{
+    margin: 20px;
+
+}
+
+#right-col-detail .label{
+    font-size: 1.2em;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#right-col-detail .data{
+    font-size: 1.2em;
+}

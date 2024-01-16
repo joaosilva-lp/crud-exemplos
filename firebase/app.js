@@ -69,6 +69,49 @@ const showContacts = (contacts) => {
   });
 };
 
+//------------------------------------------------------------------------------------
+// CLICK CONTACT LIST UL ELEMENT
+//------------------------------------------------------------------------------------
+
+const contactListPressed = (event) => {
+  const id = event.target.closest("li").getAttribute("id")
+  //console.log("id: "+id)
+  displayContactOnDetailsView(id);
+}
+
+contactList.addEventListener("click", contactListPressed);
+
+
+//------------------------------------------------------------------------------------
+// DISPLAY DETAILS VIEW ON LIST ITEM CLICK
+//------------------------------------------------------------------------------------
+
+const getContact = (id) =>{
+  return contacts.find(contact =>{
+    return contact.id === id;
+  });
+}
+
+const displayContactOnDetailsView = (id)=>{
+  const contact = getContact(id);
+  //console.log(contact)
+  const rightColDetail = document.getElementById('right-col-detail');
+  rightColDetail.innerHTML = `
+    <div class="label">Name:</div>
+    <div class="data">${contact.firstname} ${contact.lastname}</div>
+    
+    <div class="label">Age:</div>
+    <div class="data">${contact.age}</div>
+
+    <div class="label">Phone:</div>
+    <div class="data">${contact.phone}</div>
+
+    <div class="label">E-mail:</div>
+    <div class="data">${contact.email}</div>
+  `
+}
+
+
 /////////
 //MODAL//
 /////////
