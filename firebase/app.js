@@ -76,10 +76,34 @@ const showContacts = (contacts) => {
 const contactListPressed = (event) => {
   const id = event.target.closest("li").getAttribute("id")
   //console.log("id: "+id)
-  displayContactOnDetailsView(id);
+
+  if(event.target.className === "edit-user"){
+    editButtonPressed(id);
+  } else {
+    displayContactOnDetailsView(id);  
+  }
+
 }
 
+
 contactList.addEventListener("click", contactListPressed);
+
+
+//------------------------------------------------------------------------------------
+// EDIT DATA
+//------------------------------------------------------------------------------------
+
+const editButtonPressed = (id) => {
+  modalOverlay.style.display = "flex";
+
+  const contact = getContact(id);
+  firstname.value=contact.firstname;
+  lastname.value=contact.lastname;
+  age.value=contact.age;
+  phone.value=contact.phone;
+  email.value=contact.email;
+
+};
 
 
 //------------------------------------------------------------------------------------
