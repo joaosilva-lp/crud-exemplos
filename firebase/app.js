@@ -103,6 +103,8 @@ const editButtonPressed = (id) => {
   phone.value=contact.phone;
   email.value=contact.email;
 
+  modalOverlay.setAttribute("contact-id", contact.id);
+
 };
 
 
@@ -145,6 +147,12 @@ const closeBtn = document.querySelector(".close-btn");
 
 const addButtonPressed = () => {
     modalOverlay.style.display="flex";
+    modalOverlay.removeAttribute("contact-id")
+    firstname.value="";
+    lastname.value="";
+    email.value="";
+    age.value="";
+    phone.value="";
 }
 
 const closeButtonPressed = ()=>{
