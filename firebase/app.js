@@ -9,6 +9,26 @@ import {  getFirestore,
 const db = getFirestore();
 const dbRef = collection(db, "agenda");
 
+//---------------------
+//MOBILE VIEW
+//---------------------
+
+const leftCol = document.getElementById("left-col");
+const backBtn = document.getElementById("back-btn");
+
+backBtn.addEventListener("click", (e) => {
+  leftCol.style.display = "block";
+  rightCol.style.display = "none";
+});
+
+const toggleLeftAndRightViewsOnMobile = () => {
+  if (document.body.clientWidth <= 600) {
+    leftCol.style.display = "none";
+    rightCol.style.display = "block";
+  }
+};
+
+
 //////////
 //GET DATA
 //////////
@@ -83,6 +103,7 @@ const contactListPressed = (event) => {
     deleteButtonPressed(id);
   } else {
     displayContactOnDetailsView(id);  
+    toggleLeftAndRightViewsOnMobile();
   }
 
 }
@@ -131,6 +152,7 @@ const editButtonPressed = (id) => {
 //------------------------------------------------------------------------------------
 // DISPLAY DETAILS VIEW ON LIST ITEM CLICK
 //------------------------------------------------------------------------------------
+const rightCol = document.getElementById("right-col");
 
 const getContact = (id) =>{
   return contacts.find(contact =>{
