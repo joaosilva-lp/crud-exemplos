@@ -79,6 +79,8 @@ const contactListPressed = (event) => {
 
   if(event.target.className === "edit-user"){
     editButtonPressed(id);
+  } else if (event.target.className === "delete-user"){
+    deleteButtonPressed(id);
   } else {
     displayContactOnDetailsView(id);  
   }
@@ -87,6 +89,24 @@ const contactListPressed = (event) => {
 
 
 contactList.addEventListener("click", contactListPressed);
+
+//------------------------------------------------------------------------------------
+// DELETE DATA
+//------------------------------------------------------------------------------------
+
+const deleteButtonPressed = async (id)=>{
+  
+  const isConfirmed = confirm("Are you sure you want to delete it?");
+  if(isConfirmed){
+    try {
+      const docRef = doc(db, "agenda", id);
+      await deleteDoc(docRef);
+    } catch (error) {
+      setErrorMessage("error", "Unable to delete contact data. Please try again later");
+      showErrorMessages();
+    }
+  }
+}
 
 
 //------------------------------------------------------------------------------------
@@ -204,20 +224,42 @@ const saveButtonPressed = async() =>{
     
     if(Object.keys(error).length === 0){
 
-      try {
-        await addDoc(dbRef, {
-          firstname: firstname.value,
-          lastname: lastname.value,
-          age: age.value,
-          phone: phone.value,
-          email: email.value
-      });
+      if(modalOverlay.getAttribute("contact-id")){
+        // update data
+        const docRef = doc(db, "agenda", modalOverlay.getAttribute("contact-id"));
 
-      hideModal();
+        try {
+          await updateDoc(docRef, {
+            firstname: firstname.value,
+            lastname: lastname.value,
+            age: age.value,
+            phone: phone.value,
+            email: email.value
+          });
 
-      } catch (err) {
-       setErrorMessage("error", "Unable to add user data to the database. Please try again later");
-       showErrorMessages();
+          hideModal();
+        } catch (error) {
+          setErrorMessage("error", "Unable to add user data to the database. Please try again later");
+          showErrorMessages();
+        }
+
+      } else{
+        //add data
+        try {
+          await addDoc(dbRef, {
+            firstname: firstname.value,
+            lastname: lastname.value,
+            age: age.value,
+            phone: phone.value,
+            email: email.value
+        });
+  
+        hideModal();
+  
+        } catch (err) {
+         setErrorMessage("error", "Unable to update user data to the database. Please try again later");
+         showErrorMessages();
+        }
       }
     };
 }
